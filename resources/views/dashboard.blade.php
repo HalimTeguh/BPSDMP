@@ -1,3 +1,5 @@
+
+
 @extends('master')
 
 @section('title')
@@ -5,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <div class="row">
         <!-- Content Column -->
         <div class="col-lg-12 mb-4">

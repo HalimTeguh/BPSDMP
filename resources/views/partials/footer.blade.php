@@ -20,7 +20,7 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="/">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="/posts">Activity</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="/activity">Activity</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="/about">About us</a></li>
               <li><i class="bi bi-chevron-right scrollto"></i> <a href="/#contact">Contact us</a></li>
             </ul>

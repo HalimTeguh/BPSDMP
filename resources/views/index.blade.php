@@ -181,75 +181,28 @@
           </header>
 
           <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="{{ asset('/img/kegiatan/KEGIATAN-1.jpg') }}" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                  <h4>Kegiatan 1</h4>
-                  <p>judul</p>
-                  <div class="portfolio-links">
-                    <a href="{{ asset('/img/kegiatan/KEGIATAN-1.jpg') }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img src="{{ asset('/img/kegiatan/KEGIATAN-2.jpg') }}" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                  <h4>Kegiatan 2</h4>
-                  <p>judul</p>
-                  <div class="portfolio-links">
-                    <a href="{{ asset('/img/kegiatan/KEGIATAN-2.jpg') }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+            @forelse ($posts as $key => $value)
+                @if ($value->image == 'default.png')
+                  @continue
+                @endif
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                  <div class="portfolio-wrap">
+                    <img src="{{ asset('/img/kegiatan/' . $value->image) }}" class="img-fluid" alt="" />
+                    <div class="portfolio-info">
+                      <h4>Kegiatan {{ $key + 1 }}</h4>
+                      <p>{{ $value->title }}</p>
+                      <div class="portfolio-links">
+                        <a href="{{ asset('/img/kegiatan/' . $value->image) }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
+                        <a href="/activity/{{ $value->id }}" title="More Details"><i class="bi bi-link"></i></a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+            @empty
+                
+            @endforelse
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="{{ asset('/img/kegiatan/KEGIATAN-3.png') }}" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                  <h4>Kegiatan 3</h4>
-                  <p>judul</p>
-                  <div class="portfolio-links">
-                    <a href="{{ asset('/img/kegiatan/KEGIATAN-3.png') }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-              <div class="portfolio-wrap">
-                <img src="{{ asset('/img/kegiatan/KEGIATAN-4.png') }}" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                  <h4>Kegiatan 4</h4>
-                  <p>judul</p>
-                  <div class="portfolio-links">
-                    <a href="{{ asset('/img/kegiatan/KEGIATAN-4.png') }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-              <div class="portfolio-wrap">
-                <img src="{{ asset('/img/kegiatan/KEGIATAN-5.png') }}" class="img-fluid" alt="" />
-                <div class="portfolio-info">
-                  <h4>Kegiatan 5</h4>
-                  <p>judul</p>
-                  <div class="portfolio-links">
-                    <a href="{{ asset('/img/kegiatan/KEGIATAN-5.png') }}" data-gallery="portfolioGallery" class="portfokio-lightbox"><i class="bi bi-plus"></i></a>
-                    <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -345,31 +298,31 @@
           </header>
 
           <div class="row">
-            
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="{{ asset('/img/blog/blog-1.jpg') }}" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="{{ asset('/img/blog/blog-1.jpg') }}" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="{{ asset('/img/blog/blog-1.jpg') }}" class="img-fluid" alt=""></div>
-              <span class="post-date">Tue, September 15</span>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
+            <?php $i = 0; ?>
+            @forelse ($posts as $value)
+              <?php $i++; ?>
+
+              <div class="col-lg-4">
+                <div class="post-box">
+                  <div class="post-img text-center">
+                    <img src="{{ asset('/img/kegiatan/' . $value->image) }}" class="img-fluid" alt="">
+                  </div>
+                  <span class="post-date">{{ $value->date }}</span>
+                  <h3 class="post-title">{{ $value->title }}</h3>
+                  <p></p>
+                  <a href="/activity/{{ $value->id }}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                </div>
+              </div>
+              @if ($i == 3)
+                  @break
+              @endif
+            @empty
+              <div class="col-lg-4">
+                <div class="post-box">
+                  <h3 class="post-title">No Post</h3>
+                </div>
+              </div>
+            @endforelse
             
           </div>
         </div>

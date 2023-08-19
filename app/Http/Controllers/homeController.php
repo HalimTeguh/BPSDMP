@@ -3,19 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class homeController extends Controller
 {
     public function index(){
-        return view('index', ['title' => 'Home']);
+        $posts = DB::table('activity')->get();
+
+        return view('index', ['title' => 'Home', 'posts' => $posts]);
     }
 
     public function posts(){
-        return view('pages.posts', ['title' => 'Posts']);
+        $allposts = DB::table('activity')->get();
+
+        return view('pages.posts', ['title' => 'Posts', 'allposts' => $allposts]);
     }
 
-    public function singlePost(){
-        return view('pages.singlePost', ['title' => 'Posts']);
+    public function singlePost($id){
+        $allposts = DB::table('activity')->get();
+
+        $post = DB::table('activity')->where('id', $id)->first();
+
+        return view('pages.singlePost', ['title' => 'Posts', 'post' => $post, 'allposts' => $allposts]);
     }
 
     public function about(){
@@ -24,14 +33,6 @@ class homeController extends Controller
 
     public function dashboard(){
         return view('dashboard', ['title' => 'dashboard']);
-    }
-
-    public function db_users(){
-        return view('pages.db_users', ['title' => 'users']);
-    }
-
-    public function db_activity(){
-        return view('pages.db_activity', ['title' => 'activity']);
     }
 
     public function db_testimoni(){

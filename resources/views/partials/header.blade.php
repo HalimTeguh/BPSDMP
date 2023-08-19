@@ -11,7 +11,7 @@
           <li><a class="nav-link scrollto <?= ($title == 'Posts') ? "Active" : " "  ?>" href="/activity">Activity</a></li>
           <li><a class="nav-link scrollto <?= ($title == 'About') ? "Active" : " "  ?>" href="/about">About</a></li>
           <li><a class="nav-link scrollto <?= ($title == 'Home') ? "Active" : " "  ?>" href="/#contact">Contact</a></li>
-          <li><a class="getstarted" href="dashboard/login.html">Login</a></li>
+          <li><a class="getstarted" href="/login">Login</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>

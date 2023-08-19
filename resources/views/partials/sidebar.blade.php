@@ -10,17 +10,16 @@
 
     <h3 class="sidebar-title">Recent Posts</h3>
     <div class="sidebar-item recent-posts">
-      <div class="post-item clearfix">
-        <img src="{{ asset('/img/blog/blog-recent-1.jpg') }}" alt="">
-        <h4><a href="blog-single.html">Nihil blanditiis at in nihil autem</a></h4>
-        <time datetime="2020-01-01">Jan 1, 2020</time>
-      </div>
 
-      <div class="post-item clearfix">
-        <img src="{{ asset('/img/blog/blog-recent-2.jpg') }}" alt="">
-        <h4><a href="blog-single.html">Quidem autem et impedit</a></h4>
-        <time datetime="2020-01-01">Jan 1, 2020</time>
-      </div>
+      @forelse ($allposts as $item)
+        <div class="post-item clearfix">
+          <img src="{{ asset('/img/kegiatan/' . $item->image) }}" alt="">
+          <h4><a href="/activity/{{ $item->id }}">{{ $item->title }}</a></h4>
+          <time datetime="2020-01-01">{{ $item->date }}</time>
+        </div>
+      @empty
+          
+      @endforelse
 
     </div><!-- End sidebar recent posts-->
 

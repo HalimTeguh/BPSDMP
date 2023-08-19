@@ -1,19 +1,3 @@
-<?php
-
-// session_start();
-
-// if($_SESSION["username"] == "" || $_SESSION["username"] == null){
-//   header('Location: ' . $_SERVER['HTTP_REFERER']);
-//   exit();
-// }
-
-// require_once __DIR__ . "\Config\connection.php";
-// require_once __DIR__ . "\model\User.php";
-// require_once __DIR__ . "\Repository\user_rep.php";
-// require_once __DIR__ . "\service\user_ser.php";
-
-?>
-
 @extends('master')
 
 @push('style')
@@ -35,8 +19,8 @@
 @endsection
 
 @section('button_add')
-  <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-    <i class="fas fa-download fa-sm text-white-50"></i> Tambah Kegiatan</a>
+  <a href="/dashboard/activity/create" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+    <i class="fas fa-download fa-sm text-white-50"></i> Tambah Activity</a>
 @endsection
 
 @section('content')
@@ -54,40 +38,51 @@
                     <thead>
                     <tr>
                       <th>Id</th>
-                      <th>title</th>
-                      <th>excerpt</th>
-                      <th>img</th>
-                      <th>Action</th>
+                      <th>Title</th>
+                      <th>Date</th>
+                      <th>Image</th>
+                      <th>action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>Trident</td>
-                      <td>Internet
-                        Explorer 4.0
-                      </td>
-                      <td>Win 95+</td>
-                      <td><img src="{{ asset('/img/kegiatan/KEGIATAN-1.jpg') }}" alt="" width="300px"></td>
-                      <td>
-                        <form action="editUser.php" method="post">
-                          <input  type="hidden" name="id" value="">
-                          <a href="edit.php"><button class="btn btn-success">Edit</button></a>
-                        </form>
-                        <form action="../dashboard/utility/user_delete.php" method="post">
-                          <input type="hidden" name="id" value="">
-                          <input class="btn btn-danger" type="submit" value="Delete">
-                        </form>
-                    </td>
-                    </tr>
+                      @forelse ($activity as $key => $value)
+                        <tr>
+                          <td>{{ $key + 1 }}</td>
+                          <td>{{ $value->title }}</td>
+                          <td width="100px" >{{ $value->date }}</td>
+                          <td>
+                            <div class="text-center">
+                              <img src="{{ asset('/img/kegiatan/' . $value->image) }}" alt="" height="200px">
+                            </div>
+                          </td>
+                          <td>
+                            <a href="/dashboard/activity/{{ $value->id }}" class="btn btn-success m-1 w-100">Detail</a>
+
+                            <a href="/dashboard/activity/{{ $value->id }}/edit" class="btn btn-warning m-1 w-100">Edit</a>
+
+                            <form action="/dashboard/activity/{{ $value->id }}" method="post">
+                              @csrf
+                              @method('DELETE')
+                              <input class="btn btn-danger m-1 w-100" type="submit" value="Delete">
+                            </form>
+
+                          </td>
+                        </tr>
+                      @empty
+                        <tr>
+                          <td> No Activity </td>
+                        </tr>
+                      @endforelse
+                    
                     </tbody>
                     <tfoot>
-                    <tr>
-                      <th>Id</th>
-                      <th>Username</th>
-                      <th>Password</th>
-                      <th>Photos</th>
-                      <th>action</th>
-                    </tr>
+                      <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Image</th>
+                        <th>action</th>
+                      </tr>
                     </tfoot>
                   </table>
                 </div>
